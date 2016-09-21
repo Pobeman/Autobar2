@@ -31,12 +31,8 @@ public class GUI extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		GroupLayout layout = new GroupLayout(this);
-		//setLayout(layout);
-		
-		//buttonLayout.setVgap(50);
-		layout.setAutoCreateGaps(true);
-		
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
 		String buttonText[] = {
 				"Margarita",
@@ -48,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
 		};
 		
 		JButton buttons[] ={
-				new JButton("Margarita"),
+				new JButton(),
 				new JButton(),
 				new JButton(),
 				new JButton(),
@@ -56,16 +52,23 @@ public class GUI extends javax.swing.JFrame {
 				new JButton(),
 		};
 		
-		layout.setHorizontalGroup(
-				layout.createSequentialGroup()
-				.addComponent(buttons[1],GroupLayout.PREFERRED_SIZE,GroupLayout.DEFAULT_SIZE,GroupLayout.PREFERRED_SIZE)
-				.addComponent(buttons[2])
-				.addComponent(buttons[3])
-				.addComponent(buttons[4])
-		);
-		//for (int i = 0; i<6;i++) {
-			//buttonLayout.addLayoutComponent(buttonText[i], buttons[i]);
-		//}
+		int gridPos[][] = {
+				{0,0,50},
+				{0,1,50},
+				{0,2,50},
+				{0,3,50},
+				{0,4,50},
+				{0,5,50}
+		};
+		
+		for (int i=0;i<6;i++) {
+			buttons[i].setText(buttonText[i]);
+			c.gridx = gridPos[i][0];
+			c.gridy = gridPos[i][1];
+			c.ipadx = gridPos[i][2];
+			add(buttons[i],c);
+		}
+		
 		
 		
 		
